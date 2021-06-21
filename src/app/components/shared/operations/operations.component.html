@@ -1,0 +1,159 @@
+
+
+<!---MODALS-->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h4>Edit operation</h4>            
+        <form [formGroup] = "editForm" (ngSubmit)="onSubmitEditForm()">
+            <div>
+                <label>Amount:</label>
+                <div class="validationError" *ngIf="submitedEditForm && editForm.invalid">
+                    <span *ngIf="editForm.controls['amount'].errors?.required">Amount is required</span>
+                </div>
+                <input type="number" formControlName="amount">
+            </div>
+            <div>
+                <label>Concept:</label>
+                <div class="validationError" *ngIf="submitedEditForm && editForm.invalid">
+                    <span *ngIf="editForm.controls['concept'].errors?.required">Concept is required</span>
+                </div>
+                <textarea formControlName="concept"></textarea>   
+            </div> 
+
+            <div> 
+                <label>Type:</label>
+                <select class="browser-default" disabled>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a  class="modal-close waves-effect waves-green btn-flat" (click)="onSubmitEditForm()">Save changes</a>
+    </div>
+</div>
+
+
+
+
+<div id="addModal" class="modal">
+<div class="modal-content">
+    <h4>Add operation</h4>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmitAddForm()">  
+        <div> 
+            <label>Amount:</label>
+            <div class="validationError" *ngIf="submitedAddForm && addForm.invalid">
+                <span *ngIf="addForm.controls['amount'].errors?.required">Amount is required</span>
+            </div>
+            <input type="number" formControlName="amount">
+        </div>
+        <div>
+            <label>Concept:</label>
+            <div class="validationError" *ngIf="submitedAddForm && addForm.invalid">
+                <span *ngIf="addForm.controls['concept'].errors?.required">Concept is required</span>
+            </div>
+            <textarea formControlName="concept"></textarea> 
+        </div>
+        <div>
+            <label>Type:</label>
+            <div class="validationError" *ngIf="submitedAddForm && addForm.invalid">
+                <span *ngIf="addForm.controls['type'].errors?.required">Type is required</span>
+            </div>
+            <select class="browser-default" formControlName="type" formControlName="type">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="egress">egress</option>
+                <option value="entry">entry</option>
+               
+            </select>
+        </div>
+
+        
+
+        <div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+
+        </div>
+    </form>
+</div>
+    
+</div>
+
+
+
+
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h4>Eliminar operacion</h4>
+        <p>Seguro que deseas eliminar esta operacion con id {{selectedOpID}}?</p>
+    </div>
+    <div class="modal-footer">
+        <a  class="modal-close waves-effect waves-green btn-flat" (click)="onSubmitDeleteForm()">Eliminar</a>
+    </div>
+</div>
+
+
+
+
+
+<div id="asociateCategoryModal" class="modal">
+        <div class="selectCategory">SELECT CATEGORY</div> 
+        <div class="categories">
+            <div *ngFor="let category of CATEGORIES" (click)="associateCategory(category.id)">{{category.name}}</div>
+        </div>
+</div>
+
+
+
+   
+
+<div class="container">
+    <div class="currentBalance">CURRENT BALANCE: <span id="money" [ngStyle]="{ color: CURRENT_BALANCE > 0 ? 'green' : 'red' }">{{CURRENT_BALANCE}} $</span></div>
+    <div class="button">
+        <a class="modal-trigger" href="#addModal">Add Operation <i class="material-icons ">add</i></a>
+    </div>  
+
+    
+
+    <h4>Operations:</h4>
+
+
+    <h5 class="empty_op" *ngIf="OPERATIONS.length == 0">Not exist operations </h5>
+
+        
+    <div class="operations_box">
+
+        <div class="item" *ngFor="let OP of pageOfItemsOP | filter:categoryID:type">  
+            <div class="content">
+                <div> <strong>Type:</strong><span>{{OP.type}}</span></div>
+                <div><strong>Amount:</strong><span [ngStyle]="{ color: OP.type == 'entry' ? 'green' : 'red' }"><span *ngIf="OP.type == 'egress'">-</span>{{OP.amount}} $</span></div>
+                <div><strong>Date:</strong><span>{{OP.createdAt}}</span></div>
+                <div id="concept"><strong>Concept:</strong><p>{{OP.concept}}</p></div>
+                <div *ngIf="OP.Category"><strong>Category:</strong>
+                    <div class="chip">
+                        {{OP.Category.name}}
+                        <i class="close material-icons" (click)="quitCategory(OP.id)">close</i>
+                    </div>
+                </div>
+                <div *ngIf="!OP.Category"><strong>Category:</strong><span>has no category</span> <a id="btnAddCat"  href="#asociateCategoryModal" class="btn-floating btn-small waves-effect waves-light red modal-trigger" (click)="selectOp(OP)"><i class="material-icons">add</i></a> </div>
+
+            </div>
+            <div class="footer_buttons">
+                <div><a class="modal-trigger" href="#editModal"><i class="material-icons" id="editIcon">border_color</i></a> <a
+                        class="waves-effect waves-light btn modal-trigger" href="#editModal" id="editButton"
+                        (click)="loadDataEditForm(OP)">EDIT</a></div>
+                <div><a class="modal-trigger" href="#deleteModal"><i class="material-icons" id="clearIcon">clear</i></a> <a
+                        class="waves-effect waves-light btn modal-trigger" href="#deleteModal" id="deleteButton"
+                        (click)="loadDataDeleteForm(OP)">DELETE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <jw-pagination [items]="OPERATIONS" (changePage)="onChangePage($event)"></jw-pagination>
+
+
+</div>

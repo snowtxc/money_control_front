@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/materialize-css/dist/css/materialize.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/materialize-css/dist/js/materialize.min.js"
+              ]
           },
           "configurations": {
             "production": {
@@ -124,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "MoneyControlAplication"
+  "defaultProject": "MoneyControlAplication",
+  "cli": {
+    "analytics": "4c0f1478-b857-415d-9ae9-ed09213c5a92"
+  }
 }

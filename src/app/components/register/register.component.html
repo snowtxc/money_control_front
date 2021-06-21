@@ -1,0 +1,55 @@
+<div class="global">
+    <div class="form_box">
+        <h2>REGISTER</h2>
+        <form [formGroup]="formRegister" (ngSubmit) ="onSubmitForm()">
+            <div>
+                <label for="email">EMAIL:</label>
+                <div class="errors" *ngIf="submited && formRegister.controls['email'].errors">
+                    <span class="errorsValidation" *ngIf="formRegister.controls['email'].errors?.required">Email is required</span>
+                    <span class="errorsValidation" *ngIf="formRegister.controls['email'].errors?.email">Invalid Email</span>
+                </div>
+                <input type="email" name="email" id="email" formControlName="email">
+            </div>
+            <div>
+                <label for="username">USERNAME:</label>
+                <div class="errors" *ngIf="submited && formRegister.controls['username'].errors">
+                    <span class="errorsValidation" *ngIf="formRegister.controls['username'].errors?.required">Username is required</span>  
+                    <span class="errorsValidation" *ngIf="formRegister.controls['username'].errors?.minlength">Username must have more than 5 characters</span>
+                </div>
+                <input type="text" name="username" id="username" formControlName="username">
+            </div>
+            <div>
+                <label for="password">PASSWORD:</label>
+
+                <div class="errors" *ngIf="submited && formRegister.controls['password'].errors"> 
+                    <span class="errorsValidation" *ngIf="formRegister.controls['password'].errors?.required ">Password is required</span>
+                    <span class="errorsValidation" *ngIf="formRegister.controls['password'].errors?.minlength">Password must have more than 8 characters</span>
+            <!--        <span class="errorsValidation" *ngIf="formRegister.controls['password'].errors?.required && (formRegister.controls['email'].dirty || formRegister.controls['email'].touched)">Password must contain at least one capital letter and a special character</span> -->
+                </div>
+                <input type="password" name="password" id="password" formControlName="password">
+            </div>
+
+            <div>
+                <label for="confirmPass">CONFIRM PASSWORD:</label>
+                <div class="errors" *ngIf="submited && formRegister.controls['confirmPassword'].errors">
+                    <span class="errorsValidation" *ngIf="formRegister.controls['confirmPassword'].errors?.required">Password is required</span>
+                    <span class="errorsValidation" *ngIf="formRegister.controls['confirmPassword'].errors?.minlength">Password must have more than 8 characters</span>
+                    <span class="errorsValidation" *ngIf="formRegister.controls['confirmPassword'].errors?.mustMatch">Password does not match</span>
+                
+                </div>
+                <input type="password" name="confirmPass" id="confirmPass" formControlName="confirmPassword">
+            </div>
+
+            <div class="errorsValidation error_api">{{formError}}</div>
+
+
+
+            <div class="box_submit">
+                <input type="submit" value="SIGN UP">
+            </div>
+
+            <div class="have_account"><span>Do you have an account? <a routerLink="/login">Login</a></span></div>
+
+        </form>
+    </div>
+</div>

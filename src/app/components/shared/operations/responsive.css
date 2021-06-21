@@ -1,0 +1,53 @@
+@media only screen and (min-width: 320px) and (max-width: 479px){ 
+    .container .operations_box .item{
+        flex-direction: column;
+        text-align: center;
+        font-size: 15px;
+        padding: 0px;
+    }
+     .container .operations_box .item div{
+         margin: 20px;
+
+        
+    }
+    .container .button{
+         width: 100%;
+         margin-top: 20px;
+   }   
+
+   .container .operations_box .item{
+    width: 100%;
+    }
+
+     #asociateCategoryModal{
+        width: 70%;
+    }
+ }
+
+@media only screen and (min-width: 480px) and (max-width: 767px){ 
+    .container .operations_box .item{
+    width: 80%;
+    }
+
+     #asociateCategoryModal{
+        width: 60%;
+    }
+
+   
+
+
+ }
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+ .container .operations_box .item{
+    width: 80%;
+  }
+
+   #asociateCategoryModal{
+        width: 50%;
+    }
+
+
+}
+
+  

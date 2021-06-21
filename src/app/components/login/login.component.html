@@ -1,0 +1,30 @@
+<div class="global">
+    <div class="form_box">
+        <h2>LOGIN</h2>
+        <form [formGroup]="formLogin"  (ngSubmit)="onSubmitForm()">
+            <div>
+                <label for="email">EMAIL:</label>
+                <div class="errorsValidation" *ngIf="submited && formLogin.controls['email'].errors">
+                    <span *ngIf="formLogin.controls['email'].errors?.required">Email is required </span>
+                </div> 
+
+                <input type="email" name="email" id="email" formControlName="email">
+            </div>
+            <div>
+                <label for="password">PASSWORD:</label>
+                <div class="errorsValidation" *ngIf="submited && formLogin.controls['password'].errors"> 
+                    <span *ngIf="formLogin.controls['password'].errors?.required ">Password is required</span>
+                </div>
+                <input type="password" name="password" id="password" formControlName="password">
+            </div>
+
+            <div class="box_submit">
+                <input type="submit" value="LOG IN" > 
+            </div>
+
+            <div class="no_account"><span>You do not have an account? <a routerLink="/register">Register</a></span></div>
+
+            <div class="errorsValidation error_api">{{formError}}</div>
+        </form>
+    </div> 
+</div>

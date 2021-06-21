@@ -1,0 +1,191 @@
+.container{
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*BALANCE ACTUAL */
+
+.container .currentBalance{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;  
+    font-size: 20px; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+} 
+
+.container .currentBalance #money{
+    color: green;
+} 
+
+
+
+/*BUTTON ADD OPERATION */
+
+.container .button{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.container .button a{
+    background: green;
+    padding: 10px;
+    float: right;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid black;
+}
+
+.container .button a:hover{
+    cursor: pointer;
+    color: #000;
+    background-color: #fff;
+}
+
+
+.container .operations_box{
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.container  h4{
+    text-align: center;
+}
+
+.container .empty_op{
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+.empty_operations{
+    margin: 60%;
+    padding: 20px;
+    background-color: #000;
+}
+
+
+.container .operations_box .item{
+    width: 45%;
+    margin: 10px;
+    font-size: 15px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.container .operations_box .item .content div{
+    margin: 10px;
+   
+}
+
+.container .operations_box .item .content strong{
+    font-weight: bold;
+   
+}
+
+#concept{
+    margin-top: 3px;
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+.container .operations_box .item .footer_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+
+}
+
+
+
+#editButton{
+
+
+}
+
+#deleteButton{
+    background-color: red;
+
+}
+
+
+#clearIcon{
+    display: none;
+
+}
+
+#editIcon{
+    display: none;
+
+}
+
+
+
+
+/* MODALS STYLES */
+
+#addModal textarea{
+    resize: none;
+    height: 100px;
+   
+}
+
+#editModal textarea{
+    resize: none;
+    height: 100px;
+   
+}
+
+
+.validationError{
+    color: red;
+
+}
+
+#btnAddCat{
+    font-size: 10px;
+}
+
+
+#asociateCategoryModal{
+    width: 30%;
+    padding: 0px;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+#asociateCategoryModal .selectCategory{
+    text-align: center;
+    background: #000;
+    color:white;
+    padding: 8px;
+   
+}
+
+#asociateCategoryModal .categories div{
+    text-align: center;
+    padding: 8px;
+    font-size: 17px;
+    border: 1px solid black;
+}
+
+#asociateCategoryModal .categories div:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+

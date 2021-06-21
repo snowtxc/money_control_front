@@ -1,0 +1,73 @@
+
+
+<!--MODALS-->
+
+<div id="addCatModal" class="modal">
+    <div class="modal-content">
+        <h4>Create category</h4>
+        <form [formGroup]="addCatForm" (ngSubmit)="onSubmitAddCat()">
+            <div>
+                <label>name:</label>
+                <div class="validationError" *ngIf="submitedFormAddCat && addCatForm.invalid">
+                    <span *ngIf="addCatForm.controls['name'].errors?.required">Name is required</span>
+                </div>
+                <input type="text" formControlName="name">
+            </div>
+
+            <div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Create
+                </button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+<div class="contenedor">
+    <div>
+        <div class="createCategoryBtn modal-trigger" href="#addCatModal"> <span class="createCategoryBtn">Crear categoria </span><i class="material-icons">add</i>  </div>
+        <br>
+        <label>Categories</label> 
+        <select class="browser-default" id="selectCategory">
+            <option value="all">All</option>
+            <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option> 
+        </select>
+    </div>
+
+    <div>
+        <label>Type</label>
+        <form action="#">
+            <p>
+                <label>
+                    <input value="all" name="group1" type="radio" checked />
+                    <span>all</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input value="egress" name="group1" type="radio"/>
+                    <span>egress</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input value="entry" name="group1" type="radio" />
+                    <span>entry</span>
+                </label>
+            </p>
+
+        </form>
+    </div>
+
+    <div class="filter_button">
+        <a class="waves-effect waves-light btn" (click)="filtrar()">FILTRAR</a>
+    </div>
+ 
+</div>
